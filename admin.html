@@ -345,14 +345,17 @@
         }
 
         // Hide/Show tab buttons based on role
-        document.getElementById('nav-tab-rates').style.display = is_super ? 'block' : 'none';
+        // Metal Rates Editor is available to ALL logged-in staff
+        document.getElementById('nav-tab-rates').style.display = 'block';
+        // Developer tools only for superadmin
         document.getElementById('nav-tab-dev').style.display = is_super ? 'block' : 'none';
         
         switchDashboardTab('products');
         updateStats();
         renderTable();
         
-        if (is_super && typeof PricingEngine !== 'undefined') {
+        // Render the admin rates panel for all roles
+        if (typeof PricingEngine !== 'undefined') {
           PricingEngine.renderAdminPanel('admin-rates-container');
         }
       } else {

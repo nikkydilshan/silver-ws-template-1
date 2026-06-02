@@ -213,8 +213,8 @@ const PricingEngine = (() => {
 
     el.innerHTML = `
       <div class="admin-rates-panel">
-        <h3 class="playfair">Daily Metal Rates — Admin</h3>
-        <p class="admin-subtitle">Update today's rates below. Changes reflect immediately on all product prices.</p>
+        <h3 class="playfair">Daily Metal Rates — Editor</h3>
+        <p class="admin-subtitle">Update today's Hyderabad retail rates below. Changes reflect <strong>immediately</strong> on all product prices across the website.</p>
         <div class="admin-rates-grid">
           ${Object.keys(RATE_LABELS).map(key => `
             <div class="admin-rate-field">
@@ -228,36 +228,78 @@ const PricingEngine = (() => {
           `).join('')}
         </div>
         <div class="admin-actions">
-          <button class="btn btn-primary" id="save-rates-btn">Save Today's Rates</button>
-          <button class="btn btn-outline" id="reset-rates-btn">Reset to Defaults</button>
+          <button class="btn btn-primary" id="save-rates-btn">💾 Save Rates</button>
+          <button class="btn btn-outline" id="fetch-live-btn">🔄 Fetch Live Rates</button>
+          <button class="btn btn-outline" id="reset-rates-btn">↩ Reset to Defaults</button>
         </div>
         <div class="admin-status" id="admin-status" style="display:none;"></div>
       </div>
     `;
 
-    // Bind events
+    // Helper: refresh all dependent UI after rate change
+    function _refreshAfterRateChange() {
+      renderRatesTicker('rates-ticker');
+      // If admin table rendering functions exist (defined in admin.html), call them
+      if (typeof renderTable === 'function') renderTable();
+      if (typeof updateStats === 'function') updateStats();
+    }
+
+    // Save Rates button
     document.getElementById('save-rates-btn').addEventListener('click', () => {
       const inputs = el.querySelectorAll('.admin-rate-input');
       inputs.forEach(input => {
         updateRate(input.dataset.rateKey, input.value);
       });
+      _refreshAfterRateChange();
       const status = document.getElementById('admin-status');
       status.style.display = 'block';
       status.className = 'admin-status success';
-      status.textContent = '✓ Rates saved successfully! Product prices will update on next page load.';
+      status.textContent = '✓ Rates saved successfully! All product prices have been updated.';
       setTimeout(() => { status.style.display = 'none'; }, 4000);
     });
 
+    // Fetch Live Rates button
+    document.getElementById('fetch-live-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('fetch-live-btn');
+      const status = document.getElementById('admin-status');
+      btn.disabled = true;
+      btn.textContent = '⏳ Fetching...';
+      status.style.display = 'block';
+      status.className = 'admin-status info';
+      status.textContent = 'Fetching live Hyderabad rates from API...';
+      
+      try {
+        await fetchLiveRates();
+        // Re-read updated rates and populate inputs
+        const updatedRates = getRates();
+        const inputs = el.querySelectorAll('.admin-rate-input');
+        inputs.forEach(input => {
+          input.value = updatedRates[input.dataset.rateKey];
+        });
+        _refreshAfterRateChange();
+        status.className = 'admin-status success';
+        status.textContent = '✓ Live rates fetched and applied! You can adjust them further before saving.';
+      } catch (err) {
+        status.className = 'admin-status error';
+        status.textContent = '✗ Could not fetch live rates: ' + err.message;
+      }
+      btn.disabled = false;
+      btn.textContent = '🔄 Fetch Live Rates';
+      setTimeout(() => { status.style.display = 'none'; }, 5000);
+    });
+
+    // Reset to Defaults button
     document.getElementById('reset-rates-btn').addEventListener('click', () => {
       const freshRates = resetRates();
       const inputs = el.querySelectorAll('.admin-rate-input');
       inputs.forEach(input => {
         input.value = freshRates[input.dataset.rateKey];
       });
+      _refreshAfterRateChange();
       const status = document.getElementById('admin-status');
       status.style.display = 'block';
       status.className = 'admin-status info';
-      status.textContent = 'Rates reset to default values.';
+      status.textContent = 'Rates reset to default Hyderabad values.';
       setTimeout(() => { status.style.display = 'none'; }, 3000);
     });
   }
