@@ -36,6 +36,12 @@
         Mahadev <span>Jewellers</span>
       </a>
       <div class="nav-links">
+        <div class="mobile-drawer-header">
+          <span class="mobile-drawer-title">Menu</span>
+          <button class="mobile-drawer-close" aria-label="Close Menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
         <a href="index.html">Home</a>
         <a href="shop.html">Shop All</a>
         <a href="about.html">Our Legacy</a>
@@ -48,9 +54,18 @@
           </svg>
           <span class="wishlist-badge" style="display:none">0</span>
         </a>
+        <button class="nav-icon menu-toggle" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </nav>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
 
   <div class="admin-wrapper">
     <!-- Cryptographic Username/Password Login Card -->
@@ -683,6 +698,26 @@
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('username').focus();
       initImageUpload();
+
+      // Mobile Navigation Drawer
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const navOverlay = document.getElementById('nav-overlay');
+      const drawerClose = document.querySelector('.mobile-drawer-close');
+
+      function openMenu() {
+        navLinks.classList.add('open');
+        navOverlay.classList.add('active');
+        document.body.classList.add('menu-open');
+      }
+      function closeMenu() {
+        navLinks.classList.remove('open');
+        navOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+      if (menuToggle) menuToggle.addEventListener('click', openMenu);
+      if (navOverlay) navOverlay.addEventListener('click', closeMenu);
+      if (drawerClose) drawerClose.addEventListener('click', closeMenu);
     });
   </script>
 </body>

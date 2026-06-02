@@ -639,3 +639,274 @@
   color: white;
   border-color: var(--admin-danger-color);
 }
+
+/* ─── Responsive: Tablet (768px) ─── */
+@media (max-width: 768px) {
+  .admin-wrapper {
+    padding: 1rem 0;
+  }
+
+  .admin-login-container {
+    margin: 3rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .admin-login-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .dashboard-container {
+    padding: 0 1rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1.25rem;
+  }
+
+  .dashboard-brand h2 {
+    font-size: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dashboard-nav-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+  }
+
+  .stat-title {
+    font-size: 0.7rem;
+  }
+
+  .dashboard-main-tabs {
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .dashboard-main-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-tab-btn {
+    padding: 0.85rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .products-panel {
+    padding: 1.25rem;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .search-wrap {
+    max-width: none;
+    min-width: 0;
+  }
+
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Table: make it scroll horizontally */
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .table-product-info img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .table-product-name {
+    font-size: 0.9rem;
+  }
+
+  .table-product-sub {
+    font-size: 0.7rem;
+  }
+
+  /* Modal */
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header {
+    padding: 1.25rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+  }
+
+  .modal-footer {
+    padding: 1rem;
+  }
+
+  /* Dev Console */
+  .dev-console-wrapper {
+    padding: 1.25rem;
+  }
+
+  .dev-text-area {
+    height: 180px;
+    font-size: 0.8rem;
+  }
+
+  /* File Upload */
+  .file-upload-drag-area {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .file-upload-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* ─── Responsive: Small Mobile (480px) ─── */
+@media (max-width: 480px) {
+  .admin-login-container {
+    margin: 2rem 0.75rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .admin-login-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .admin-login-header p {
+    font-size: 0.85rem;
+  }
+
+  .admin-login-btn {
+    padding: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .dashboard-container {
+    padding: 0 0.75rem;
+  }
+
+  .dashboard-header {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .dashboard-brand h2 {
+    font-size: 1.1rem;
+  }
+
+  #role-badge {
+    font-size: 0.65rem !important;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .stat-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .dashboard-main-tabs {
+    margin-bottom: 1.25rem;
+  }
+
+  .dashboard-tab-btn {
+    padding: 0.7rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .products-panel {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .admin-table th {
+    font-size: 0.7rem;
+    padding: 0.6rem 0.4rem;
+  }
+
+  .admin-table td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .table-product-info {
+    gap: 8px;
+  }
+
+  .table-product-info img {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+  }
+
+  .table-product-name {
+    font-size: 0.8rem;
+  }
+
+  .status-select {
+    font-size: 0.75rem;
+    padding: 0.3rem 1.2rem 0.3rem 0.4rem;
+  }
+
+  .logout-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+}
