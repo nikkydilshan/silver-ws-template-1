@@ -1,0 +1,19 @@
+<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5EEDF" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="100%" stop-color="#A88443" />
+    </linearGradient>
+  </defs>
+  <text x="1" y="27" font-family="'Playfair Display', 'Georgia', serif" font-size="21" font-weight="900" fill="url(#logoGold)">M</text>
+  <text x="16.5" y="32" font-family="'Playfair Display', 'Georgia', serif" font-size="21" font-weight="900" fill="url(#logoGold)">J</text>
+  <polygon points="21,5 29,5 33,9 25,17 17,9" fill="url(#logoGold)" fill-opacity="0.15" stroke="url(#logoGold)" stroke-width="1.2" stroke-linejoin="round" />
+  <line x1="17" y1="9" x2="33" y2="9" stroke="url(#logoGold)" stroke-width="0.8" opacity="0.8" />
+  <line x1="21" y1="5" x2="21" y2="9" stroke="url(#logoGold)" stroke-width="0.6" opacity="0.6" />
+  <line x1="25" y1="5" x2="25" y2="9" stroke="url(#logoGold)" stroke-width="0.6" opacity="0.6" />
+  <line x1="29" y1="5" x2="29" y2="9" stroke="url(#logoGold)" stroke-width="0.6" opacity="0.6" />
+  <line x1="21" y1="9" x2="25" y2="17" stroke="url(#logoGold)" stroke-width="0.6" opacity="0.6" />
+  <line x1="25" y1="9" x2="25" y2="17" stroke="url(#logoGold)" stroke-width="0.6" opacity="0.8" />
+  <line x1="29" y1="9" x2="25" y2="17" stroke="url(#logoGold)" stroke-width="0.6" opacity="0.6" />
+</svg>
